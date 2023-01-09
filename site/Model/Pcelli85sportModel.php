@@ -47,6 +47,7 @@ class pcelli85sportModel extends ItemModel
 		$this->setState('pcelli85sport.id', $pk);
 
 		$offset = $app->input->getUInt('limitstart');
+		$offset = 50;
 		$this->setState('list.offset', $offset);
 
 		// Load the parameters.

@@ -32,6 +32,8 @@ use pcelli85\Component\pcelli85sports\Site\Helper\RouteHelper as pcelli85sportsH
 	<?php foreach ($this->items as $id => $item) :
 		$slug = preg_replace('/[^a-z\d]/i', '-', $item->title);
 		$slug = strtolower(str_replace(' ', '-', $slug));
+		$today = date("Y-m-d H:i:s");
+		$date = new JDate($item->date_event);
 	?>
 	<tr>
 	    <?php if ($item->state == 1) : ?>
@@ -53,6 +55,7 @@ use pcelli85\Component\pcelli85sports\Site\Helper\RouteHelper as pcelli85sportsH
     		<td><?php echo $item->location_event; ?></td>
     		<td><?php echo $item->team1_event //$item->lastvisit; ?></td>
     		<td><?php echo $item->team2_event; ?></td>
+			<td><?php echo $item->categoria; ?></td>
 		<?php endif; ?>
 	</tr>
 	<?php endforeach; ?><?php //endif; ?>
