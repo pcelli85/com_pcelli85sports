@@ -25,6 +25,7 @@ use pcelli85\Component\pcelli85sports\Site\Helper\RouteHelper as pcelli85sportsH
 		<th scope="col"><?php echo Text::_('COM_PCELLI85SPORTS_LIST_LOCATION_EVENT'); ?></th>
 		<th scope="col"><?php echo Text::_('COM_PCELLI85SPORTS_LIST_TEAM1_EVENT'); ?></th>
 		<th scope="col"><?php echo Text::_('COM_PCELLI85SPORTS_LIST_TEAM2_EVENT'); ?></th>
+		<th scope="col"><?php echo Text::_('COM_PCELLI85SPORTS_LIST_CATEGORIA'); ?></th>
 	</tr>
 	</thead>
 	<tbody>
