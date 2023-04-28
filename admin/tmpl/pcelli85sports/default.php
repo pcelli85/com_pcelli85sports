@@ -40,7 +40,7 @@ $editIcon = '<span class="fa fa-pen-square me-2" aria-hidden="true"></span>';
 							<?php echo Text::_('COM_PCELLI85SPORTS_MYWALKS_TABLE_CAPTION'); ?>, <?php echo Text::_('JGLOBAL_SORTED_BY'); ?>
 						</caption>
 						<thead>
-							<tr>
+						<tr>
 								<td style="width:1%" class="text-center">
 									<?php echo HTMLHelper::_('grid.checkall'); ?>
 								</td>
@@ -64,6 +64,9 @@ $editIcon = '<span class="fa fa-pen-square me-2" aria-hidden="true"></span>';
 								</th>
 								<th scope="col" style="width:5%" class="d-none d-md-table-cell">
 									<?php echo HTMLHelper::_('searchtools.sort', 'Categoria', 'a.categoria', $listDirn, $listOrder); ?>
+								</th>
+								<th scope="col" style="width:5%" class="d-none d-md-table-cell">
+									<?php echo HTMLHelper::_('searchtools.sort', 'Risultati', 'a.id', $listDirn, $listOrder); ?>
 								</th>
 								<th scope="col" style="width:5%" class="d-none d-md-table-cell">
 									<?php echo HTMLHelper::_('searchtools.sort', 'JGRID_HEADING_ID', 'a.id', $listDirn, $listOrder); ?>
@@ -113,6 +116,10 @@ $editIcon = '<span class="fa fa-pen-square me-2" aria-hidden="true"></span>';
 								</td>
 								<td class="">
 									<?php echo $item->categoria; ?>
+								</td>
+								<td class="">
+									<a href="index.php?option=com_pcelli85sports&view=pcelli85sport_dates&walk_id=<?php echo $item->id; ?>">
+									<?php echo $editIcon; ?><?php echo $item->nvisits; ?></a>
 								</td>
 								<td class="d-none d-md-table-cell">
 									<?php echo $item->id; ?>

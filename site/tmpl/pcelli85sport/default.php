@@ -17,8 +17,6 @@ use Joomla\CMS\Language\Text;
 	<h1><?php echo $this->item->title; ?></h1>
 </div>
 
-<p><?php echo $this->item->description; ?>!</p>
-
 <h2><?php echo Text::_('COM_PCELLI85SPORTS_WALK_REPORTS'); ?></h2>
 
 <div class="table-responsive">
@@ -27,13 +25,22 @@ use Joomla\CMS\Language\Text;
   <thead>
     <tr>
  		<th scope="col"><?php echo Text::_('COM_PCELLI85SPORTS_WALK_DATE'); ?></th>
+		<th scope="col"><?php echo Text::_('Squadra casa'); ?></th>
+		<th scope="col"><?php echo Text::_('Punti'); ?></th>
+		<th scope="col"><?php echo Text::_('Punti'); ?></th>
+		<th scope="col"><?php echo Text::_('Squadra Ospite'); ?></th>
 		<th scope="col"><?php echo Text::_('COM_PCELLI85SPORTS_WALK_WEATHER'); ?></th>
+		
 	</tr>
 	</thead>
 	<tbody>
 	<?php foreach ($this->reports as $id => $report) : ?>
 	<tr>
 		<td><?php echo $report->date; ?></td>
+		<td><?php echo $report->team1_event; ?></td>
+		<td><?php echo $report->result_team1; ?></td>
+		<td><?php echo $report->result_team2; ?></td>
+		<td><?php echo $report->team2_event; ?></td>
 		<td><?php echo $report->weather; ?></td>
 	</tr>
 	<?php endforeach; ?><?php //endif; ?>

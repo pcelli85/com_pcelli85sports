@@ -44,6 +44,11 @@ class pcelli85sportsModel extends ListModel
 			$config['filter_fields'] = array(
 				'id', 'a.id',
 				'title', 'a.title',
+				'date_event', 'a.date_event',
+				'location_event', 'a.location_event',
+				'team1_event', 'a.team1_event',
+				'team2_event', 'a.team2_event',
+				'categoria_id', 'a.categoria_id',
 				'state', 'a.state',
 			);
 		}
@@ -138,11 +143,11 @@ class pcelli85sportsModel extends ListModel
 		if (!empty($search))
 		{
 			$search = $db->quote('%' . str_replace(' ', '%', $db->escape(trim($search), true) . '%'));
-			$query->where('(a.title LIKE ' . $search . ')');
+			$query->where('(a.date_event LIKE ' . $search . ')');
 		}
 
 		// Add the list ordering clause.
-		$orderCol  = $this->state->get('list.ordering', 'a.id');
+		$orderCol  = $this->state->get('list.ordering', 'a.date_event');
 		$orderDirn = $this->state->get('list.direction', 'ASC');
 
 		$query->order($db->escape($orderCol) . ' ' . $db->escape($orderDirn));

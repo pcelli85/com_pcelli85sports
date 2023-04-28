@@ -65,6 +65,7 @@ class Pcelli85sportsModel extends ListModel
 
 		// List state information
 		$value = $app->input->get('limit', $app->get('list_limit', 0), 'uint');
+		$value = 100;
 		$this->setState('list.limit', $value);
 
 		$value = $app->input->get('limitstart', 0, 'uint');
@@ -136,7 +137,8 @@ class Pcelli85sportsModel extends ListModel
 				'list.select',
 				'a.*,
 				(SELECT MAX(`date`) from #__pcelli85sport_dates WHERE walk_id = a.id) AS last_visit,
-				(SELECT count(`date`) from #__pcelli85sport_dates WHERE walk_id = a.id) AS nvisits
+				(SELECT count(`date`) from #__pcelli85sport_dates WHERE walk_id = a.id) AS nvisits,
+				(select categoria FROM #__pcelli85sports_categorie WHERE id = a.categoria_id) AS categoria
 				')
 		);
 		$query->from('#__pcelli85sports AS a');

@@ -16,11 +16,11 @@ use pcelli85\Component\pcelli85sports\Site\Helper\RouteHelper as pcelli85sportsH
 
 ?>
 <div class="table-responsive">
-  <table class="table table-striped">
+  <table class="table-sport">
   <caption><?php echo Text::_('COM_PCELLI85SPORTS_LIST_TABLE_CAPTION'); ?></caption>
   <thead>
     <tr>
- 		<th scope="col"><?php echo Text::_('COM_PCELLI85SPORTS_LIST_TITLE'); ?></th>
+ 		<th scope="col"><?php echo Text::_('Evento'); ?></th>
 		<th scope="col"><?php echo Text::_('COM_PCELLI85SPORTS_LIST_DATE_EVENT'); ?></th>
 		<th scope="col"><?php echo Text::_('COM_PCELLI85SPORTS_LIST_LOCATION_EVENT'); ?></th>
 		<th scope="col"><?php echo Text::_('COM_PCELLI85SPORTS_LIST_TEAM1_EVENT'); ?></th>
@@ -33,30 +33,48 @@ use pcelli85\Component\pcelli85sports\Site\Helper\RouteHelper as pcelli85sportsH
 		$slug = preg_replace('/[^a-z\d]/i', '-', $item->title);
 		$slug = strtolower(str_replace(' ', '-', $slug));
 		$today = date("Y-m-d H:i:s");
+		//$dateToday = $today - (3600*24);
 		$date = new JDate($item->date_event);
+		$color_td = '#ffffffff';
+
+        switch ($item->categoria_id) {
+             case 5: // Note the lowercase chars
+                 $color_td = "#00ffcc";
+                 break;
+             case 6: // Note the lowercase chars
+                 $color_td = "#ccffcc";
+                 break;
+             case 7:
+                 $color_td = "#ff9999";
+                 break;
+             default:
+                 $color_td = '#ffffffff';
+        }
+		
+
 	?>
 	<tr>
-	    <?php if ($item->state == 1) : ?>
-    		<td><a href="<?php echo Route::_(pcelli85sportsHelperRoute::getWalkRoute($item->id, $slug)); ?>">
-    		<?php echo $item->title; ?></a></td>
-        	<td><?php $date = new JDate($item->date_event); ?>
-    			<?php
-    			$mesi = array(1=>'gennaio', 'febbraio', 'marzo', 'aprile',
-    			        'maggio', 'giugno', 'luglio', 'agosto',
-    					'settembre', 'ottobre', 'novembre','dicembre');
-
-    			$giorni = array('domenica','lunedì','martedì','mercoledì',
-                        'giovedì','venerdì','sabato');
-
-                list($sett,$giorno,$mese,$anno) = explode('-',date_format($date,"w-d-n-Y"));
-
-    			echo $giorni[$sett],' ',$giorno,' ',$mesi[$mese],' ',$anno, ' ore ', date_format($date,"H:i");
-            ?></td>
-    		<td><?php echo $item->location_event; ?></td>
-    		<td><?php echo $item->team1_event //$item->lastvisit; ?></td>
-    		<td><?php echo $item->team2_event; ?></td>
-			<td><?php echo $item->categoria; ?></td>
-		<?php endif; ?>
+    	    <?php if ($item->state == 1 && $date >= $today) : ?>
+        		<td bgcolor="<?php echo $color_td;?>"><a href="<?php echo Route::_(pcelli85sportsHelperRoute::getWalkRoute($item->id, $slug)); ?>">
+        		<?php echo $item->title; ?></a></td>
+            	<td bgcolor="<?php echo $color_td;?>"><?php $date ?>
+        			<?php
+        			$mesi = array(1=>'gennaio', 'febbraio', 'marzo', 'aprile',
+        			        'maggio', 'giugno', 'luglio', 'agosto',
+        					'settembre', 'ottobre', 'novembre','dicembre');
+    
+        			$giorni = array('domenica','lunedì','martedì','mercoledì',
+                            'giovedì','venerdì','sabato');
+    
+                    list($sett,$giorno,$mese,$anno) = explode('-',date_format($date,"w-d-n-Y"));
+    
+        			echo $giorni[$sett],' ',$giorno,' ',$mesi[$mese],' ',$anno, ' ore ', date_format($date,"H:i");
+                ?></td>
+        		<td bgcolor="<?php echo $color_td;?>"><?php echo $item->location_event; ?></td>
+        		<td bgcolor="<?php echo $color_td;?>"><?php echo $item->team1_event //$item->lastvisit; ?></td>
+        		<td bgcolor="<?php echo $color_td;?>"><?php echo $item->team2_event; ?></td>
+        		<td bgcolor="<?php echo $color_td;?>"><?php echo $item->categoria; ?></td>
+    		<?php endif; ?>
 	</tr>
 	<?php endforeach; ?><?php //endif; ?>
 	</tbody>

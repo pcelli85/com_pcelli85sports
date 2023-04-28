@@ -78,8 +78,11 @@ CREATE TABLE IF NOT EXISTS `#__pcelli85sports_categorie` (
 --
 
 INSERT IGNORE INTO `#__pcelli85sports_categorie` (`id`, `categoria`) VALUES
-(1, 'Pulcini'),
-(2, 'Mini'),
+(1, 'Mini'),
+(2, 'Pulcini'),
 (3, 'Esordienti'),
-(4, 'Serie A'),
-(5, 'Serie C');
+(4, 'Giovanissimi'),
+(5, 'Giovanissime'),
+(6, 'Serie C'),
+(7, 'Serie B'),
+(8, 'Serie A');
