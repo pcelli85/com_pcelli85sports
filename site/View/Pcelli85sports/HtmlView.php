@@ -69,7 +69,17 @@ class HtmlView extends BaseHtmlView
 	public function display($tpl = null)
 	{
 		$app    = Factory::getApplication();
+		
 		$params = $app->getParams();
+
+		$layout = $params->get('mylayout','','string');
+
+		if($layout == ''){
+			$layout = 'default';
+		}
+		
+
+        $this->setLayout($layout);
 
 		// Get some data from the models
 		$state      = $this->get('State');

@@ -12,7 +12,23 @@
 	<!-- Add fields to the parameters object for the layout. -->
 		<fields name="params">
 		<fieldset name="request" label="COM_MENUS_BASIC_FIELDSET_LABEL">
-
+            <field
+                            name="mylayout"
+                            type="list"
+                            label="Seleziona Categoria"
+                            description="Categorie Disponibili"
+                            required="true"
+                        >
+                            <option value="default">Seleziona Categoria</option>
+                            <option value="minitamburello">Mini Tamburello</option>
+                            <option value="pulcini">Pulcini</option>
+							<option value="esordienti">Esordienti</option>
+							<option value="giovanissimi">Giovanissimi</option>
+							<option value="giovanissime">Giovanissime</option>
+							<option value="seriec">Serie C</option>
+							<option value="serieb">Serie B</option>
+							<option value="seriea">Serie A</option>
+                        </field>
 		</fieldset>
 
 		<!-- Add fields to the parameters object for the layout. -->
